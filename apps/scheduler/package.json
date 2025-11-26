@@ -1,0 +1,24 @@
+{
+    "name": "@actionable-newsletter/scheduler",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc -p .",
+        "dev": "tsx watch src/index.ts",
+        "start": "node dist/index.js",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "node-cron": "^3.0.3",
+        "@actionable-newsletter/scraper": "workspace:*",
+        "@actionable-newsletter/curator": "workspace:*",
+        "@actionable-newsletter/generator": "workspace:*",
+        "@actionable-newsletter/database": "workspace:*",
+        "@actionable-newsletter/integrations": "workspace:*"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.0",
+        "@types/node": "^20.14.0",
+        "@types/node-cron": "^3.0.11"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "@actionable-newsletter/integrations",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc -p .",
+        "dev": "tsc -watch -p .",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "@notionhq/client": "^2.2.15",
+        "@octokit/rest": "^20.1.1",
+        "@actionable-newsletter/scraper": "workspace:*",
+        "@actionable-newsletter/curator": "workspace:*",
+        "@actionable-newsletter/generator": "workspace:*"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.0"
+    }
+}

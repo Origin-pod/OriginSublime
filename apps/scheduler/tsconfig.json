@@ -1,0 +1,27 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "rootDir": "src"
+    },
+    "include": [
+        "src"
+    ],
+    "references": [
+        {
+            "path": "../../packages/scraper"
+        },
+        {
+            "path": "../../packages/curator"
+        },
+        {
+            "path": "../../packages/generator"
+        },
+        {
+            "path": "../../packages/database"
+        },
+        {
+            "path": "../../packages/integrations"
+        }
+    ]
+}

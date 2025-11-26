@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id              String   @id @default(cuid())
+  title           String
+  url             String   @unique
+  source          String
+  category        Category
+  relevanceScore  Int
+  summary         String   @db.Text
+  whyItMatters    String   @db.Text
+  actionable      Boolean  @default(false)
+  timeToRead      Int
+  status          Status   @default(UNREAD)
+  tags            String[]
+  scrapedAt       DateTime @default(now())
+  publishedAt     DateTime?
+
+  exercises       Exercise[]
+  notionPageId    String?
+  notionUrl       String?
+
+  @@index([category, relevanceScore])
+  @@index([scrapedAt])
+}
+
+model Exercise {
+  id          String   @id @default(cuid())
+  articleId   String
+  article     Article  @relation(fields: [articleId], references: [id])
+  type        ExerciseType
+  title       String
+  description String   @db.Text
+  starterCode String?  @db.Text
+  timeEstimate Int
+  difficulty  Difficulty
+  completed   Boolean  @default(false)
+  completedAt DateTime?
+
+  @@index([articleId])
+}
+
+model AITool {
+  id              String   @id @default(cuid())
+  name            String   @unique
+  description     String   @db.Text
+  category        AICategory
+  url             String
+  dayNumber       Int?     @unique
+  status          ChallengeStatus @default(QUEUED)
+  projectIdea     String?  @db.Text
+  projectBuilt    String?  @db.Text
+  githubUrl       String?
+  rating          Int?
+  wouldUseAgain   Boolean?
+  timeSpent       Int?
+  keyLearnings    String?  @db.Text
+  completedAt     DateTime?
+  notionPageId    String?
+
+  @@index([dayNumber])
+  @@index([category, rating])
+}
+
+model Connection {
+  id          String   @id @default(cuid())
+  theme       String
+  description String   @db.Text
+  articleIds  String[]
+  foundAt     DateTime @default(now())
+  weekNumber  Int
+
+  @@index([weekNumber])
+}
+
+model UserPreference {
+  id                String   @id @default(cuid())
+  userId            String   @unique @default("single-user")
+  rustWeight        Int @default(80)
+  cppWeight         Int @default(70)
+  aiWeight          Int @default(70)
+  philosophyWeight  Int @default(50)
+  poetryWeight      Int @default(40)
+  selfHelpWeight    Int @default(30)
+  dailyReadingTime  Int @default(30)
+  dailyChallengeTime Int @default(60)
+  dailyExerciseTime Int @default(30)
+  notionApiKey      String?
+  notionDatabaseId  String?
+  githubToken       String?
+  githubRepo        String?
+  updatedAt         DateTime @updatedAt
+}
+
+enum Category {
+  RUST
+  CPP
+  AI_ML
+  PHILOSOPHY
+  POETRY
+  SELF_HELP
+  GENERAL_TECH
+}
+
+enum Status {
+  UNREAD
+  READ
+  COMPLETED_EXERCISE
+  SAVED_FOR_LATER
+}
+
+enum ExerciseType {
+  CODE_KATA
+  REFACTORING
+  IMPLEMENTATION
+  REFLECTION
+  WRITING
+  PROJECT
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum AICategory {
+  CODE_GENERATION
+  CODE_ANALYSIS
+  DESIGN
+  WRITING
+  RESEARCH
+  DEBUGGING
+  OTHER
+}
+
+enum ChallengeStatus {
+  QUEUED
+  IN_PROGRESS
+  COMPLETED
+  SKIPPED
+}

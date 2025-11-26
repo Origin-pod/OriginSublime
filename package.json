@@ -1,0 +1,35 @@
+{
+    "name": "actionable-newsletter",
+    "private": true,
+    "version": "0.1.0",
+    "packageManager": "pnpm@10.23.0",
+    "license": "MIT",
+    "scripts": {
+        "dev": "turbo dev",
+        "build": "turbo build",
+        "test": "turbo test",
+        "setup": "./scripts/setup.sh",
+        "scrape:test": "tsx scripts/test-scrape.ts",
+        "curate:test": "tsx scripts/test-curator.ts",
+        "generate:test": "tsx scripts/test-generator.ts",
+        "api:dev": "pnpm -C apps/api run dev",
+        "api:start": "pnpm -C apps/api run start",
+        "scheduler:dev": "pnpm -C apps/scheduler run dev",
+        "scheduler:start": "pnpm -C apps/scheduler run start",
+        "trigger:scrape": "tsx scripts/trigger-scrape.ts",
+        "trigger:challenge": "tsx scripts/trigger-challenge.ts"
+    },
+    "devDependencies": {
+        "turbo": "^2.0.0",
+        "typescript": "^5.5.0",
+        "@types/node": "^20.14.0",
+        "tsx": "^4.7.0",
+        "vitest": "^2.0.0",
+        "@types/node-fetch": "^2.6.4",
+        "@types/cheerio": "^0.22.33"
+    },
+    "workspaces": [
+        "packages/*",
+        "apps/*"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "@actionable-newsletter/api",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc -p .",
+        "dev": "tsx watch src/index.ts",
+        "start": "node dist/index.js",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "fastify": "^4.28.0",
+        "@fastify/cors": "^9.0.0",
+        "@actionable-newsletter/scraper": "workspace:*",
+        "@actionable-newsletter/curator": "workspace:*",
+        "@actionable-newsletter/generator": "workspace:*",
+        "@actionable-newsletter/database": "workspace:*"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.0",
+        "@types/node": "^20.14.0"
+    }
+}
