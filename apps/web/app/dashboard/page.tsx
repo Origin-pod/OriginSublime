@@ -124,7 +124,7 @@ export default function Dashboard() {
                             {challenge.description}
                         </p>
                         {challenge.projectIdea && (
-                            <p className="text-sm mb-4 text-gray-400">{challenge.projectIdea}</p>
+                            <p className="text-sm mb-4 text-gray-300">{challenge.projectIdea}</p>
                         )}
                         <button className="bg-white text-black px-6 py-3 font-mono text-sm hover:bg-gray-200 transition-colors duration-0">
                             START CHALLENGE →
@@ -162,7 +162,7 @@ export default function Dashboard() {
                                         </div>
                                     </div>
 
-                                    <p className="text-gray-700 mb-4">{article.summary}</p>
+                                    <p className="text-gray-800 mb-4">{article.summary}</p>
 
                                     <div className="flex gap-2 flex-wrap">
                                         {article.tags.map(tag => (

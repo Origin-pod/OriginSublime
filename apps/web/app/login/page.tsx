@@ -40,7 +40,7 @@ export default function LoginPage() {
                     <h1 className="text-5xl font-serif mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
                         Actionable Newsletter
                     </h1>
-                    <p className="text-lg text-gray-600">Read Less. Build More.</p>
+                    <p className="text-lg text-gray-800">Read Less. Build More.</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="border-2 border-black p-8">

@@ -44,7 +44,7 @@ export default function SignupPage() {
                     <h1 className="text-5xl font-serif mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
                         Actionable Newsletter
                     </h1>
-                    <p className="text-lg text-gray-600">Read Less. Build More.</p>
+                    <p className="text-lg text-gray-800">Read Less. Build More.</p>
                 </div>
 
                 {/* Signup Form */}
@@ -69,7 +69,7 @@ export default function SignupPage() {
                                 type="text"
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                className="w-full border-2 border-black p-3 focus:outline-none focus:ring-0 focus:border-black"
+                                className="w-full border-2 border-black p-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 placeholder="Your Name"
                             />
                         </div>
@@ -84,7 +84,7 @@ export default function SignupPage() {
                                 required
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                className="w-full border-2 border-black p-3 focus:outline-none focus:ring-0 focus:border-black"
+                                className="w-full border-2 border-black p-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 placeholder="you@example.com"
                             />
                         </div>
@@ -100,7 +100,7 @@ export default function SignupPage() {
                                 minLength={8}
                                 value={formData.password}
                                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                className="w-full border-2 border-black p-3 focus:outline-none focus:ring-0 focus:border-black"
+                                className="w-full border-2 border-black p-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 placeholder="Min. 8 characters"
                             />
                         </div>
