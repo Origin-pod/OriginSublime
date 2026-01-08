@@ -69,7 +69,7 @@ export default function SettingsPage() {
         });
     };
 
-    const removetopic = (slug: string) => {
+    const removeTopic = (slug: string) => {
         if (!preferences) return;
 
         const newWeights = { ...preferences.topicWeights };
