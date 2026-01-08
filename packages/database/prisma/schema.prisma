@@ -7,6 +7,94 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ===== NEW: Multi-User Support =====
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String?
+  passwordHash  String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  preferences   UserPreferences?
+  articles      UserArticle[]
+  activities    UserActivity[]
+  
+  @@index([email])
+}
+
+model UserPreferences {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Dynamic topic preferences (JSON)
+  topicWeights Json    @default("{}")  // { "rust": 90, "cpp": 70, "ai": 80 }
+  
+  level       String   @default("intermediate") // "beginner", "intermediate", "advanced"
+  dailyLimit  Int      @default(5)
+  
+  // Notification settings
+  emailNotif  Boolean  @default(true)
+  notionSync  Boolean  @default(false)
+  githubSync  Boolean  @default(false)
+  
+  // Integration keys
+  notionApiKey      String?
+  notionDatabaseId  String?
+  githubToken       String?
+  githubRepo        String?
+  
+  updatedAt   DateTime @updatedAt
+}
+
+model UserArticle {
+  userId      String
+  articleId   String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  
+  status      Status   @default(UNREAD)
+  readAt      DateTime?
+  rating      Int?     // 1-5 stars
+  
+  @@id([userId, articleId])
+  @@index([userId, readAt])
+}
+
+model UserActivity {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type        String   // "article_read", "exercise_completed", "challenge_started"
+  entityType  String   // "article", "exercise", "challenge"
+  entityId    String
+  
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  
+  @@index([userId, createdAt])
+  @@index([entityType, entityId])
+}
+
+// Topic mapping (bridges Category enum to dynamic topics)
+model TopicMapping {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  category    Category // Links to existing enum for backward compatibility
+  icon        String?
+  description String?
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([category])
+}
+
+// ===== EXISTING MODELS (Modified) =====
+
 model Article {
   id              String   @id @default(cuid())
   title           String
@@ -24,6 +112,7 @@ model Article {
   publishedAt     DateTime?
 
   exercises       Exercise[]
+  userArticles    UserArticle[]  // NEW: User relationships
   notionPageId    String?
   notionUrl       String?
 
@@ -80,6 +169,8 @@ model Connection {
   @@index([weekNumber])
 }
 
+// OLD: Single-user preference (kept for backward compatibility)
+// Can be migrated to UserPreferences after deployment
 model UserPreference {
   id                String   @id @default(cuid())
   userId            String   @unique @default("single-user")
@@ -98,6 +189,8 @@ model UserPreference {
   githubRepo        String?
   updatedAt         DateTime @updatedAt
 }
+
+// ===== ENUMS =====
 
 enum Category {
   RUST
