@@ -54,9 +54,12 @@ export default function Home() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 mb-4">
             AI-powered content curation • Daily exercises • Project templates • 100 Days of Building
           </p>
+          <a href="/marketing/index.html" className="text-sm underline hover:no-underline">
+            Learn more about the system
+          </a>
         </div>
       </div>
     </div>
