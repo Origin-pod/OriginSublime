@@ -1,0 +1,842 @@
+/* ========================================
+   Actionable Newsletter System — Styles
+   Minimalist Monochrome Design System
+   Pure Black & White, Editorial, Timeless
+   ======================================== */
+
+/* ========================================
+   CSS Reset & Base
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background-color: #FFFFFF;
+    color: #000000;
+    line-height: 1.625;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Global noise texture for paper-like quality */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    background-attachment: fixed;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+}
+
+h1 {
+    font-size: clamp(4rem, 10vw, 10rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+}
+
+h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: 600;
+}
+
+code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+hr {
+    border: none;
+    border-top: 4px solid #000000;
+    margin: 0;
+}
+
+/* ========================================
+   Layout
+   ======================================== */
+
+.container {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+section {
+    padding: 8rem 0;
+    border-bottom: 8px solid #000000;
+    position: relative;
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+/* Section textures - horizontal lines pattern */
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 1px,
+            #000 1px,
+            #000 2px);
+    background-size: 100% 4px;
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 0;
+}
+
+section>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+    padding: 12rem 0 10rem;
+    text-align: center;
+    background: #FFFFFF;
+}
+
+.hero::before {
+    background-image: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 40px,
+            #00000008 40px,
+            #00000008 42px);
+    opacity: 0.5;
+}
+
+.hero-headline {
+    margin-bottom: 2rem;
+    line-height: 0.9;
+}
+
+.hero-subheadline {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.5;
+    font-family: 'Source Serif 4', Georgia, serif;
+}
+
+.hero-positioning {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: #525252;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-style: italic;
+}
+
+/* ========================================
+   CTA Buttons
+   ======================================== */
+
+.cta-button {
+    display: inline-block;
+    padding: 1.25rem 2.5rem;
+    background-color: #000000;
+    color: #FFFFFF;
+    text-decoration: none;
+    border: 2px solid #000000;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 0.875rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: none;
+}
+
+.cta-button:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.cta-button:focus-visible {
+    outline: 3px solid #000000;
+    outline-offset: 3px;
+}
+
+.cta-button.primary {
+    background-color: #000000;
+    border-color: #000000;
+    color: #FFFFFF;
+}
+
+.cta-button.primary:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* ========================================
+   Problem Section
+   ======================================== */
+
+.problem {
+    background-color: #FFFFFF;
+}
+
+.problem h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.problem-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.problem-content p {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.truth-statement {
+    font-weight: 600;
+    border-left: 4px solid #000000;
+    padding-left: 2rem;
+    margin: 3rem 0;
+}
+
+.closing-statement {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-style: italic;
+    text-align: center;
+    margin-top: 4rem;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ========================================
+   Insight Section
+   ======================================== */
+
+.insight {
+    background-color: #F5F5F5;
+}
+
+.insight::before {
+    background-image:
+        linear-gradient(#00000008 1px, transparent 1px),
+        linear-gradient(90deg, #00000008 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+}
+
+.insight h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.insight-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.insight-content p {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.key-question {
+    font-weight: 600;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.final-insight {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-style: italic;
+    text-align: center;
+    margin-top: 4rem;
+    line-height: 1.6;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ========================================
+   How It Works Section
+   ======================================== */
+
+.how-it-works {
+    background-color: #FFFFFF;
+}
+
+.how-it-works h2 {
+    text-align: center;
+}
+
+.section-intro {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 4rem;
+    font-weight: 600;
+}
+
+.pipeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    margin-bottom: 4rem;
+    border: 2px solid #000000;
+}
+
+.pipeline-step {
+    background-color: #FFFFFF;
+    padding: 3rem 2rem;
+    border: 1px solid #000000;
+    border-radius: 0;
+    transition: all 100ms;
+}
+
+.pipeline-step:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.pipeline-step h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.pipeline-step ul {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.pipeline-step li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+.pipeline-result {
+    text-align: center;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 600;
+}
+
+/* ========================================
+   What You Get Section
+   ======================================== */
+
+.what-you-get {
+    background-color: #F5F5F5;
+}
+
+.what-you-get h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 0;
+    border: 2px solid #000000;
+}
+
+.feature {
+    background-color: #FFFFFF;
+    padding: 3rem;
+    border: 1px solid #000000;
+    border-radius: 0;
+    transition: all 100ms;
+}
+
+.feature:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.feature h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature p {
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* ========================================
+   A Day With the System
+   ======================================== */
+
+.day-with-system {
+    background-color: #FFFFFF;
+}
+
+.day-with-system h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.timeline {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    border-left: 2px solid #000000;
+    padding-left: 3rem;
+}
+
+.timeline-item {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #E5E5E5;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3.5rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+}
+
+.time {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.narrative p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+.day-conclusion {
+    text-align: center;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 4rem auto 0;
+    font-weight: 600;
+}
+
+/* ========================================
+   Who This Is For Section
+   ======================================== */
+
+.who-for {
+    background-color: #F5F5F5;
+}
+
+.who-for h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.who-for-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 2px solid #000000;
+}
+
+.who-for-grid h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    padding: 2rem 3rem 0;
+    background: #FFFFFF;
+}
+
+.for-column,
+.not-for-column {
+    padding: 0 3rem 3rem;
+    background: #FFFFFF;
+}
+
+.for-column {
+    border-right: 2px solid #000000;
+}
+
+.who-for-grid ul {
+    list-style: none;
+}
+
+.who-for-grid li {
+    margin-bottom: 1.25rem;
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.for-column li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.not-for-column li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+/* ========================================
+   Philosophy Section
+   ======================================== */
+
+.philosophy {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.philosophy::before {
+    background-image: repeating-linear-gradient(90deg,
+            transparent,
+            transparent 1px,
+            #fff 1px,
+            #fff 2px);
+    background-size: 4px 100%;
+    opacity: 0.03;
+}
+
+.philosophy h2 {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.manifesto {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.manifesto p {
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.5;
+    margin: 3rem 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+}
+
+.manifesto hr {
+    max-width: 120px;
+    margin: 3rem auto;
+    border-color: #FFFFFF;
+    border-width: 2px;
+}
+
+/* ========================================
+   Tech Credibility Section
+   ======================================== */
+
+.tech {
+    background-color: #FFFFFF;
+}
+
+.tech h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.tech-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tech-content p {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.stack {
+    border-left: 4px solid #000000;
+    padding-left: 2rem;
+    font-weight: 600;
+}
+
+/* ========================================
+   Future Vision Section
+   ======================================== */
+
+.future {
+    background-color: #F5F5F5;
+}
+
+.future h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.future-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.future-content p {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.future-features {
+    margin: 3rem 0;
+    padding: 3rem;
+    border: 2px solid #000000;
+    background: #FFFFFF;
+}
+
+.future-features p {
+    margin-bottom: 2rem;
+}
+
+.future-philosophy {
+    font-style: italic;
+    line-height: 1.9;
+    font-size: 1.25rem;
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.scaffolding {
+    text-align: center;
+    color: #525252;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* ========================================
+   Final CTA Section
+   ======================================== */
+
+.final-cta {
+    background: #000000;
+    color: #FFFFFF;
+    padding: 12rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.final-cta::before {
+    background-image: radial-gradient(circle at top center,
+            #ffffff,
+            transparent 70%);
+    opacity: 0.05;
+}
+
+.final-cta h2 {
+    margin-bottom: 3rem;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-content p {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.time-to-execute {
+    font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
+    margin: 3rem 0 !important;
+    font-weight: 600;
+}
+
+.defines-builder {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem) !important;
+    margin: 3rem 0 4rem !important;
+    font-weight: 600;
+}
+
+.final-cta .cta-button {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    padding: 1.5rem 3rem;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-color: #FFFFFF;
+}
+
+.final-cta .cta-button:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+.subtext {
+    font-size: 0.875rem !important;
+    color: #FFFFFF !important;
+    opacity: 0.7;
+    margin-top: 1.5rem !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+footer {
+    background-color: #FFFFFF;
+    padding: 4rem 0;
+    text-align: center;
+    border-top: 2px solid #000000;
+}
+
+footer p {
+    color: #525252;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+}
+
+/* ========================================
+   Responsive Adjustments
+   ======================================== */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    section {
+        padding: 6rem 0;
+        border-bottom: 4px solid #000000;
+    }
+
+    .hero {
+        padding: 8rem 0 6rem;
+    }
+
+    .final-cta {
+        padding: 8rem 0;
+    }
+
+    .pipeline {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .who-for-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .for-column {
+        border-right: none;
+        border-bottom: 2px solid #000000;
+    }
+
+    .timeline {
+        padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+        left: -2.5rem;
+    }
+
+    h1 {
+        font-size: clamp(3rem, 12vw, 5rem);
+    }
+
+    h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    section {
+        padding: 4rem 0;
+    }
+
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 0.8125rem;
+    }
+
+    .feature,
+    .pipeline-step {
+        padding: 2rem 1.5rem;
+    }
+
+    .future-features {
+        padding: 2rem;
+    }
+}
