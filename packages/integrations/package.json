@@ -9,13 +9,21 @@
         "test": "vitest"
     },
     "dependencies": {
+        "@actionable-newsletter/curator": "workspace:*",
+        "@actionable-newsletter/generator": "workspace:*",
+        "@actionable-newsletter/scraper": "workspace:*",
         "@notionhq/client": "^2.2.15",
         "@octokit/rest": "^20.1.1",
-        "@actionable-newsletter/scraper": "workspace:*",
-        "@actionable-newsletter/curator": "workspace:*",
-        "@actionable-newsletter/generator": "workspace:*"
+        "@react-email/components": "^1.0.4",
+        "@react-email/render": "^2.0.2",
+        "react": "19.2.3",
+        "react-dom": "19.2.3",
+        "react-email": "^5.2.1",
+        "resend": "^6.7.0"
     },
     "devDependencies": {
+        "@types/react": "^19.2.7",
+        "@types/react-dom": "^19.2.3",
         "typescript": "^5.5.0"
     }
 }

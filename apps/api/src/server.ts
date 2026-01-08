@@ -7,6 +7,7 @@ import { authRoutes } from './routes/auth';
 import { preferencesRoutes } from './routes/preferences';
 import { feedRoutes } from './routes/feed';
 import { activityRoutes } from './routes/activity';
+import { devRoutes } from './routes/dev';
 
 export async function buildServer() {
     const server = Fastify({
@@ -44,6 +45,7 @@ export async function buildServer() {
                 articles: '/api/articles',
                 exercises: '/api/exercises',
                 challenges: '/api/challenges',
+                ...(process.env.NODE_ENV !== 'production' && { dev: '/api/dev (testing only)' }),
             },
         };
     });
@@ -53,6 +55,7 @@ export async function buildServer() {
     await preferencesRoutes(server);
     await feedRoutes(server);
     await activityRoutes(server);
+    await devRoutes(server); // Dev-only routes
 
     return server;
 }
