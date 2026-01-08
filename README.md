@@ -1,8 +1,46 @@
 # 🎉 PROJECT COMPLETE: Actionable Newsletter System
 
-## 🏆 **ALL 5 PHASES COMPLETE!**
+## 🏆 **ALL 7 PHASES COMPLETE!**
 
-A fully automated, AI-powered content curation and action generation system built with Node.js, TypeScript, and Claude AI.
+A fully automated, AI-powered content curation and action generation system with beautiful marketing page and user dashboard.
+
+---
+
+## 🎨 **Marketing Landing Page**
+
+A minimalist monochrome design that showcases the system's philosophy: **Read Less. Build More.**
+
+<details>
+<summary>📸 View Full Marketing Page Screenshots (Click to expand)</summary>
+
+### Hero Section
+![Hero - Read Less. Build More.](.github/images/marketing_hero_top_1767886814997.png)
+
+### Problem & Insight
+![Problem Section - Drowning in Content](.github/images/marketing_middle_1_1767886825847.png)
+
+### How It Works Pipeline
+![Pipeline - From Noise to Action](.github/images/marketing_middle_2_1767886839013.png)
+
+### Features Grid
+![Daily Builder's Toolkit](.github/images/marketing_middle_3_1767886851044.png)
+
+### Philosophy & CTA
+![Manifesto Section](.github/images/marketing_middle_4_1767886869294.png)
+
+### Final Call to Action
+![Stop Reading. Start Building.](.github/images/marketing_bottom_footer_1767886890326.png)
+
+</details>
+
+**Design System:**
+- Pure black & white minimalist aesthetic
+- Playfair Display serif headlines
+- Source Serif 4 body text
+- Zero border radius (sharp, editorial)
+- Instant color-inversion hover effects
+
+**View Live:** Open `marketing/index.html` in your browser
 
 ---
 
